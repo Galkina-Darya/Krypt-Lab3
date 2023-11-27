@@ -1,0 +1,11 @@
+version: '3.8' #Версия используемая при написании yml матрицу можно посмотреть https://docs.docker.com/compose/compose-file/compose-file-v3/ опираемся на версию установленного docker engine
+
+services:
+  pgadmin:
+    image: dpage/pgadmin4    # образ который будет задействован для поднятия контейнера (по умолчанию берется из dockerhub'а)
+    container_name: pgadmin4 # имя контейнера
+    ports:
+      - "8081:80"  # Порт, через который будет доступен PGAdmin в браузере. 8081 - внешний, 80 - внутренний
+    environment:   #Переменные которые передаем в контейнер. В данном случае - переменные для авторизации в веб интерфейс pgadmin
+      PGADMIN_DEFAULT_EMAIL: email@example.com  # e-mail для авторизации
+      PGADMIN_DEFAULT_PASSWORD: your_password   # пароль
